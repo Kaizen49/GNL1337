@@ -6,19 +6,19 @@
 /*   By: selkasba <selkasba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 22:09:57 by selkasba          #+#    #+#             */
-/*   Updated: 2026/11/11 22:09:57 by selkasba         ###   ########.fr       */
+/*   Updated: 2026/11/14 20:01:14 by selkasba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 size_t ft_strlen(char *s)
 {
-    char *p;
-    p = s;
-
-    while(*p)
-        *p++;
-    return (p - s );
+    size_t i;
+    
+    i = 0;
+    while(s[i])
+        i++;
+    return (i);
 }
 
 
@@ -41,8 +41,10 @@ char *ft_strchr(char *s, char c)
 
 char *ft_strjoin(char *s1, char *s2)
 {
+    char *s;
     size_t len1;
     size_t len2;
+    size_t i;
 
     if(!s2)
         return (NULL);
@@ -51,42 +53,30 @@ char *ft_strjoin(char *s1, char *s2)
     else
         len1 = ft_strlen(s1);
     len2 = ft_strlen(s2);
-
-    char *s = (char *)malloc(len1 + len2 + 1);
+    s = (char *)malloc(len1 + len2 + 1);
     if(!s)
         return (NULL);
-
-    size_t i = 0;
-    while(s1[i])
-    {
-        s[i] = s1[i];
-        i++;
-    }
-    size_t j =0;
-     while(s2[j])
-    {
-        s[i] = s2[j];
-        i++;
-        j++;
-    }
+    i = 0;
+    while(i < len1)
+        s[i++] = *s1++;
+    while(*s2)
+        s[i++] = *s2++;
     s[i] = '\0';
     return(s);
-
-
-
 }
+
 
 char *ft_strcpy(char *s1, char *s2)
 {
     size_t  i;
 
-    s2 = malloc(ft_strlen(s1) + 1);
+ 
     i = 0;
-    while(s1[i])
+    while(s2[i])
     {
-        s2[i] = s1[i];
+        s1[i] = s2[i];
         i++;
     }
-    s2[i] = '\0';
-    return (s2);
+    s1[i] = '\0';
+    return (s1);
 }
