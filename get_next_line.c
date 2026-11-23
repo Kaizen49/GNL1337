@@ -6,7 +6,7 @@
 /*   By: selkasba <selkasba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 20:20:36 by selkasba          #+#    #+#             */
-/*   Updated: 2026/11/14 21:57:35 by selkasba         ###   ########.fr       */
+/*   Updated: 2026/11/23 14:46:12 by selkasba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,5 @@ char	*get_next_line(int fd)
 		return (free(saved), free(line), saved = NULL, NULL);
 	free(saved);
 	saved = rest;
-	if (!saved[0])
-	{
-		free(saved);
-		saved = NULL;
-	}
 	return (line);
 }
